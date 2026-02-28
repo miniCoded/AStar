@@ -151,7 +151,8 @@ main = do
   let
     startGrid = map (\x -> read x :: Int) (words start)
     endGrid = map (\x -> read x :: Int) (words end)
-    areValid = parity startGrid && parity endGrid
+    -- Two board states are connected if their parities are the same. If they differ, then they can't be "solved"
+    areValid = parity startGrid == parity endGrid
 
   if areValid then
     let
